@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import pt.nandes.course.entities.pk.OrderItemPK;
 
 import java.io.Serializable;
+
 @Entity
 @Table(name = "tb_order_item")
 public class OrderItem implements Serializable {
@@ -16,7 +17,8 @@ public class OrderItem implements Serializable {
     private Integer quantity;
     private Double price;
 
-    public OrderItem() {}
+    public OrderItem() {
+    }
 
     public OrderItem(Order order, Product product, Integer quantity, Double price) {
         id.setOrder(order);
@@ -56,6 +58,10 @@ public class OrderItem implements Serializable {
 
     public void setPrice(Double price) {
         this.price = price;
+    }
+
+    public Double getSubTotal() {
+        return price * quantity;
     }
 
     @Override
